@@ -5,5 +5,5 @@ urlpatterns = patterns('users.views',
     (r'^signup/$', 'signup'),
     (r'^welcome/$', 'welcome'),
     (r'^logout/$', 'logout'),
-    #(r'^recover/$', 'recover'),
+    (r'^recover/$', 'recover'),
 )

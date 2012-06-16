@@ -1,0 +1,13 @@
+#E-Mail Recover PWD System
+In order to make the system functional in your localhost
+we will set an email server in the 1025 port of the localhost
+
+Set-up your settings.py project folder with 
+the EMAIL_PORT for the email server
+
+$ vim settings.py
+Add the following line:
+EMAIL_PORT = 1025
+
+Start a SMTP dummy server
+$python -m smtpd -n -c DebuggingServer localhost:1025

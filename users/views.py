@@ -88,28 +88,31 @@ def logout(request):
     response = HttpResponseRedirect('/users/login/')
     response.delete_cookie('user_id')
     return response
-"""
+
 def recover(request):
     template = 'users/recover.html'
     context_instance = RequestContext(request)
+    recover_message = 'This is a foo message'
+    content = {}
 
     if request.method == 'POST':
-        form = RecoverForm(request.POST) #TODO:Implement this FORM
-        if form.is_valid():
-            cd = form.cleaned_data
+        email = request.POST['email']
+        content['email'] = email
+        try:
+            u = User.objects.get(email=email)
             send_mail(
                 'Recover your password',
                 recover_message,
-                cd.get('email', 'noreply@example.com'),
-                #TODO:Check if it is correct
-                ['siteowner@example.com'],
+                'noreply@localhost',
+                [u.email],
             )
 
-            return HttpResponseRedirect('/users/login')
-    else:
-        form = RecoverForm()
-    return render_to_response(template, {'form': form}, context_instance)
+            return HttpResponseRedirect('/users/login/')
+        except User.DoesNotExist:
+            content['error_message'] = "E-mail address doesn't exist"
 
+    return render_to_response(template, content, context_instance)
+"""
 def newpassword(request):
     #mail validation and reset password
     pass
