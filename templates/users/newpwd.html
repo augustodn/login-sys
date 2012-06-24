@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Login</title>
+    <style type="text/css">
+      .label {
+        text-align: right;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Recover Password</h2>
+    <p>Please enter the new password for {{ username }} below</p>
+    <form method="post">{% csrf_token %} 
+      <table>
+        <tr>
+          <td class="label">Password</td>
+          <td><input type="password" name="password" value=""></td>
+        </tr>
+
+        <tr>
+          <td class="label">Verify</td>
+          <td><input type="password" name="verify" value=""></td>
+        </tr>
+      </table>
+
+      <div class="error">{{ error_message }}</div>
+      <input type="submit" value="Submit">
+
+    </form>
+  </body>
+
+</html>
