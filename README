@@ -1,3 +1,7 @@
+#06/24/2012
+Added recover password via mail system
+
+
 #E-Mail Recover PWD System
 In order to make the system functional in your localhost
 we will set an email server in the 1025 port of the localhost
